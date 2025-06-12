@@ -37,7 +37,7 @@ const FeedbackForm = () => {
     layananBantuan: 0,
     implLaporan: 0,
   });
-
+  const [showErrors, setShowErrors] = useState(false);
 
   const handleRatingChange = (key, value) => {
     setRatings(prev => ({
@@ -49,6 +49,19 @@ const FeedbackForm = () => {
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    // Check if any rating is 0
+    const hasEmptyRatings = Object.values(ratings).some(rating => rating === 0);
+    
+    if (hasEmptyRatings) {
+      setShowErrors(true);
+      // Clear error state after 6 seconds
+      setTimeout(() => {
+        setShowErrors(false);
+      }, 6000);
+      return;
+    }
+
     console.log('Feedback submitted:', ratings);
     //  connect ke backend
 
@@ -130,6 +143,7 @@ const FeedbackForm = () => {
                 <StarRate 
                   value={ratings[item.key]} 
                   onChange={(value) => handleRatingChange(item.key, value)}
+                  error={showErrors && ratings[item.key] === 0}
                 />
               </div>
             ))}
@@ -148,6 +162,7 @@ const FeedbackForm = () => {
                 <StarRate 
                   value={ratings[item.key]} 
                   onChange={(value) => handleRatingChange(item.key, value)}
+                  error={showErrors && ratings[item.key] === 0}
                 />
               </div>
             ))}
@@ -166,6 +181,7 @@ const FeedbackForm = () => {
                 <StarRate 
                   value={ratings[item.key]} 
                   onChange={(value) => handleRatingChange(item.key, value)}
+                  error={showErrors && ratings[item.key] === 0}
                 />
               </div>
             ))}
@@ -184,6 +200,7 @@ const FeedbackForm = () => {
                 <StarRate 
                   value={ratings[item.key]} 
                   onChange={(value) => handleRatingChange(item.key, value)}
+                  error={showErrors && ratings[item.key] === 0}
                 />
               </div>
             ))}
@@ -202,6 +219,7 @@ const FeedbackForm = () => {
                 <StarRate 
                   value={ratings[item.key]} 
                   onChange={(value) => handleRatingChange(item.key, value)}
+                  error={showErrors && ratings[item.key] === 0}
                 />
               </div>
             ))}

@@ -1,9 +1,9 @@
 import React from "react";
 import { Star } from "lucide-react";
 
-export default function StarRate(){
-    const [rating, setRating] =React.useState(null);
-    const [hover, setHover] = React.useState("null"); 
+export default function StarRate({ value, onChange, error }){
+    const [rating, setRating] = React.useState(value);
+    const [hover, setHover] = React.useState(null); 
 
     return (
         <div className="flex items-center space-x-1">
@@ -15,7 +15,10 @@ export default function StarRate(){
                     type = "radio" 
                     name = "rate"
                     value={currentRate}
-                    onClick={() => setRating(currentRate)}
+                    onClick={() => {
+                        setRating(currentRate);
+                        onChange && onChange(currentRate);
+                    }}
                     className="hidden"
                     />
 
@@ -24,7 +27,9 @@ export default function StarRate(){
                     className={`transition-colors ${
                         currentRate <= (hover || rating) 
                         ? "text-blue-600 fill-blue-600" 
-                        : "text-gray-300 fill-gray-300"
+                        : error 
+                          ? "text-red-300 fill-red-300"
+                          : "text-gray-300 fill-gray-300"
                     }`}
                     onMouseEnter={() => setHover(currentRate)}
                     onMouseLeave={() => setHover(null)}
