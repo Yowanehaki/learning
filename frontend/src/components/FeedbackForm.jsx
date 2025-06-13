@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import StarRate from './StarRate';
+import Validation from './Validation';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
@@ -38,6 +39,8 @@ const FeedbackForm = () => {
     implLaporan: 0,
   });
   const [showErrors, setShowErrors] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [modalType, setModalType] = useState('');
 
   const handleRatingChange = (key, value) => {
     setRatings(prev => ({
@@ -54,7 +57,9 @@ const FeedbackForm = () => {
     const hasEmptyRatings = Object.values(ratings).some(rating => rating === 0);
     
     if (hasEmptyRatings) {
-      setShowErrors(true);
+      setShowErrors(true); // Tambahkan ini untuk menampilkan bintang merah
+      setModalType('warning');
+      setShowModal(true);
       // Clear error state after 6 seconds
       setTimeout(() => {
         setShowErrors(false);
@@ -62,10 +67,19 @@ const FeedbackForm = () => {
       return;
     }
 
-    console.log('Feedback submitted:', ratings);
-    //  connect ke backend
+    // Show confirmation modal
+    setModalType('confirm');
+    setShowModal(true);
+  };
 
-    //ke halaman appreciate
+  const handleConfirmSubmit = () => {
+    // Close modal
+    setShowModal(false);
+    
+    // Submit logic here
+    console.log('Feedback submitted:', ratings);
+    
+    // Navigate to appreciate page
     navigate('/appreciate');
   };
 
@@ -254,6 +268,13 @@ const FeedbackForm = () => {
         </button>
         </div>
       </form>
+
+      <Validation 
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        onConfirm={handleConfirmSubmit}
+        type={modalType}
+      />
     </div>
   );
 };
