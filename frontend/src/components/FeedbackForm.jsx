@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import StarRate from './StarRate';
+import StarRate from './starRate'; 
 import Validation from './Validation';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';

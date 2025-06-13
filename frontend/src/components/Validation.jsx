@@ -12,38 +12,38 @@ const Validation = ({ isOpen, onClose, onConfirm, type }) => {
       <div className="relative bg-white rounded-lg p-8 max-w-md w-full mx-4">
         {type === 'warning' ? (
           <>
-            <h3 className="text-xl font-bold text-red-600 mb-4">Peringatan!</h3>
+            <h3 className="text-xl font-bold text-red-600 mb-4">Warning!</h3>
             <p className="text-gray-700 mb-6">
-              Mohon isi semua rating feedback sebelum melanjutkan.
+              Please complete all feedback ratings before proceeding.
             </p>
             <div className="flex justify-end">
               <button
                 onClick={onClose}
                 className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
               >
-                Tutup
+                Close
               </button>
             </div>
           </>
         ) : (
           <>
-            <h3 className="text-xl font-bold text-gray-800 mb-4">Konfirmasi Submit</h3>
+            <h3 className="text-xl font-bold text-gray-800 mb-4">Confirm Submission</h3>
             <p className="text-gray-700 mb-6">
-              Apakah Anda yakin dengan feedback yang diberikan? 
-              Feedback tidak dapat diubah setelah disubmit.
+              Are you sure you want to submit this feedback?
+              Please note that feedback cannot be modified after submission.
             </p>
             <div className="flex justify-end space-x-4">
               <button
                 onClick={onClose}
                 className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
               >
-                Batal
+                Cancel
               </button>
               <button
                 onClick={onConfirm}
                 className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
               >
-                Ya, Submit
+                Yes, Submit
               </button>
             </div>
           </>
