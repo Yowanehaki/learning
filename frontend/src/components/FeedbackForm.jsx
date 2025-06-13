@@ -3,6 +3,7 @@ import StarRate from './starRate';
 import Validation from './Validation';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
+import { submitFeedback } from '../services/api';
 
 const FeedbackForm = () => {
   const [ratings, setRatings] = useState({
@@ -38,6 +39,7 @@ const FeedbackForm = () => {
     layananBantuan: 0,
     implLaporan: 0,
   });
+  const [suggestions, setSuggestions] = useState('');
   const [showErrors, setShowErrors] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState('');
@@ -72,15 +74,23 @@ const FeedbackForm = () => {
     setShowModal(true);
   };
 
-  const handleConfirmSubmit = () => {
-    // Close modal
-    setShowModal(false);
-    
-    // Submit logic here
-    console.log('Feedback submitted:', ratings);
-    
-    // Navigate to appreciate page
-    navigate('/appreciate');
+  const handleConfirmSubmit = async () => {
+    try {
+      setShowModal(false);
+      
+      console.log('Preparing to submit ratings:', ratings);
+      
+      const response = await submitFeedback({
+        ratings,
+        suggestions
+      });
+      
+      console.log('Submission successful:', response);
+      navigate('/appreciate');
+    } catch (error) {
+      console.error('Submission error:', error);
+      alert(`Failed to submit feedback: ${error.message}`);
+    }
   };
 
   // sales
@@ -247,6 +257,8 @@ const FeedbackForm = () => {
           </div>
           <div className='space-y-3 sm:px-3'> 
           <textarea
+            value={suggestions}
+            onChange={(e) => setSuggestions(e.target.value)}
             className="w-full h-40 p-3 border-2 border-gray-500 rounded-lg resize-none 
             focus:outline-none focus:ring-2 
             focus:ring-blue-500 

@@ -8,7 +8,7 @@ const Validation = ({ isOpen, onClose, onConfirm, type }) => {
       {/* Overlay */}
       <div className="absolute inset-0 bg-black opacity-50"></div>
       
-      {/* Validasi */}
+      {/* Validation */}
       <div className="relative bg-white rounded-lg p-8 max-w-md w-full mx-4">
         {type === 'warning' ? (
           <>
