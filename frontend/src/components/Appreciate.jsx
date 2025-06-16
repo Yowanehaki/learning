@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from '../assets/logo.png';
 
+ //Tampilan halaman apresiasi setelah mengirimkan feedback
 const Appreciate = () => {
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">

@@ -39,11 +39,13 @@ const FeedbackForm = () => {
     layananBantuan: 0,
     implLaporan: 0,
   });
+   
   const [suggestions, setSuggestions] = useState('');
   const [showErrors, setShowErrors] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState('');
 
+   // Fungsi untuk menangani perubahan rating
   const handleRatingChange = (key, value) => {
     setRatings(prev => ({
       ...prev,
@@ -51,29 +53,31 @@ const FeedbackForm = () => {
     }));
   };
 
+   // Navigasi dan penanganan submit
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Check if any rating is 0
+    // check jika ada rating yang kosong
     const hasEmptyRatings = Object.values(ratings).some(rating => rating === 0);
     
     if (hasEmptyRatings) {
-      setShowErrors(true); // Tambahkan ini untuk menampilkan bintang merah
+      setShowErrors(true); 
       setModalType('warning');
       setShowModal(true);
-      // Clear error state after 6 seconds
+      // Membersihkan error setelah 6 detik
       setTimeout(() => {
         setShowErrors(false);
       }, 6000);
       return;
     }
 
-    // Show confirmation modal
+    // Menampilkan modal konfirmasi
     setModalType('confirm');
     setShowModal(true);
   };
 
+  // Fungsi untuk menangani konfirmasi submit
   const handleConfirmSubmit = async () => {
     try {
       setShowModal(false);
@@ -139,7 +143,7 @@ const FeedbackForm = () => {
     { key: 'implLaporan', label: 'Laporan' }
   ];
   
-
+ //Merender komponen
   return (
     <div className="max-w-3xl mx-auto sm:px-15 p-6 bg-white border border-gray-200">
   {/* Header */}
@@ -281,6 +285,7 @@ const FeedbackForm = () => {
         </div>
       </form>
 
+      {/* Error Modal */}
       <Validation 
         isOpen={showModal}
         onClose={() => setShowModal(false)}
