@@ -26,7 +26,7 @@ export default function StarRate({ value, onChange, error }){
                     size = {20}
                     className={`transition-colors ${
                         currentRate <= (hover || rating) 
-                        ? "text-blue-600 fill-blue-600" 
+                        ? "text-yellow-500 fill-yellow-500" 
                         : error 
                           ? "text-red-300 fill-red-300"
                           : "text-gray-300 fill-gray-300"
