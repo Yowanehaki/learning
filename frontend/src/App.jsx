@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import FeedbackForm from './components/FeedbackForm';
 import Appreciate from './components/Appreciate';
 import { LanguageProvider } from './context/LanguageContext';
+import './App.css';
 
 function App() {
   return (

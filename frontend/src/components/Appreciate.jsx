@@ -8,26 +8,55 @@ const Appreciate = () => {
 
   const translations = {
     ID: {
-      message: 'Terima kasih atas masukan Anda! Kami menghargai masukan Anda dan akan menggunakannya untuk meningkatkan layanan kami. Dukungan Anda sangat berarti bagi kami.'
+      title: 'Terima Kasih!',
+      message: 'Kami menghargai masukan Anda dan akan menggunakannya untuk meningkatkan layanan kami.',
+      subtitle: 'Dukungan Anda sangat berarti bagi kami.'
     },
     EN: {
-      message: 'Thank you for your feedback! We appreciate your input and will use it to improve our services. Your support means a lot to us.'
+      title: 'Thank You!',
+      message: 'We appreciate your input and will use it to improve our services.',
+      subtitle: 'Your support means a lot to us.'
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-      <div className="max-w-2xl w-full bg-white rounded-lg shadow-sm border border-gray-200 p-8 text-center">
-        {/* Logo image */}
-        <div className="w-80 h-24 mx-auto mb-8 flex items-center justify-center">
-          <img src={logo} alt="logo" className="w-full h-full object-contain" />
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 flex items-center justify-center px-4">
+      <div className="max-w-md w-full">
+        {/* Card container */}
+        <div className="bg-white rounded-2xl shadow-lg border-0 p-8 text-center relative overflow-hidden">
+          {/* Subtle background decoration */}
+          <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-100 to-transparent rounded-full -translate-y-16 translate-x-16 opacity-50"></div>
+          <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-blue-50 to-transparent rounded-full translate-y-10 -translate-x-10 opacity-50"></div>
+          
+          {/* Content */}
+          <div className="relative z-10">
+            {/* Success icon */}
+            <div className="w-16 h-16 mx-auto mb-6 bg-green-100 rounded-full flex items-center justify-center">
+              <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+            </div>
 
-        {/* Thank you message */}
-        <div className="space-y-4">
-          <h1 className="text-xl sm:text-2xl font-medium text-gray-800 leading-relaxed">
-            {translations[language].message}
-          </h1>
+            {/* Logo */}
+            <div className="w-50 h-30 mx-auto mb-1">
+              <img src={logo} alt="logo" className="w-full h-full object-contain opacity-80" />
+            </div>
+
+            {/* Title */}
+            <h1 className="text-2xl font-bold text-gray-800 mb-4">
+              {translations[language].title}
+            </h1>
+
+            {/* Message */}
+            <p className="text-gray-600 text-base leading-relaxed mb-3">
+              {translations[language].message}
+            </p>
+
+            {/* Subtitle */}
+            <p className="text-gray-500 text-sm font-medium">
+              {translations[language].subtitle}
+            </p>
+          </div>
         </div>
       </div>
     </div>

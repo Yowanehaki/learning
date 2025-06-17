@@ -71,7 +71,7 @@ const Validation = ({ isOpen, onClose, onConfirm, type }) => {
               </button>
               <button
                 onClick={onConfirm}
-                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+                className="px-4 py-2 bg-blue-800 text-white rounded hover:bg-blue-700"
               >
                 {content.confirmation.submit}
               </button>

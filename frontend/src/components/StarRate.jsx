@@ -23,7 +23,7 @@ export default function StarRate({ value, onChange, error }){
                     />
 
                     <Star 
-                    size = {20}
+                    size = {23}
                     className={`transition-colors ${
                         currentRate <= (hover || rating) 
                         ? "text-yellow-500 fill-yellow-500" 
