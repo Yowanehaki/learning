@@ -14,7 +14,7 @@ const Appreciate = () => {
         {/* Thank you message */}
         <div className="space-y-4">
           <h1 className="text-xl sm:text-2xl font-medium text-gray-800 leading-relaxed">
-            Thank you for your feedback! We appreciate your input and will use it to improve our services. Your support means a lot to us.
+           Terima kasih atas masukan Anda! Kami menghargai masukan Anda dan akan menggunakannya untuk meningkatkan layanan kami. Dukungan Anda sangat berarti bagi kami.
           </h1>
         </div>
       </div>

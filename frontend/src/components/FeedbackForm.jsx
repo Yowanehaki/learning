@@ -152,8 +152,8 @@ const FeedbackForm = () => {
       <img src={logo} alt="logo" className="w-full h-full object-contain" />
     </div>
     <div className="text-center sm:text-left">
-      <h1 className="text-xl sm:text-2xl font-bold text-gray-800 py-3">CUSTOMER FEEDBACK</h1>
-      <h2 className="text-xl sm:text-2xl font-bold text-gray-800">FORM</h2>
+      <h1 className="text-xl sm:text-2xl font-bold text-gray-800 py-3">FORMULIR UMPAN BALIK</h1>
+      <h2 className="text-xl sm:text-2xl font-bold text-gray-800">PELANGGAN</h2>
     </div>
   </div>
 
@@ -162,7 +162,7 @@ const FeedbackForm = () => {
         {/* Sales Section */}
         <div className="mb-8">
           <div className="border-b-2 border-gray-800 pb-3 mb-6">
-            <h3 className="text-lg font-bold text-gray-800">SALES</h3>
+            <h3 className="text-lg font-bold text-gray-800">PENJUALAN</h3>
           </div>
           <div className="space-y-3 sm:px-3">
             {salesCriteria.map((item) => (
@@ -181,7 +181,7 @@ const FeedbackForm = () => {
         {/* Product/License Section */}
         <div className="mb-8">
           <div className="border-b-2 border-gray-800 pb-3 mb-6">
-            <h3 className="text-lg font-bold text-gray-800">PRODUCT / LICENSE</h3>
+            <h3 className="text-lg font-bold text-gray-800">PRODUK/LISENSI</h3>
           </div>
           <div className="space-y-3 sm:px-3">
             {productCriteria.map((item) => (
@@ -200,7 +200,7 @@ const FeedbackForm = () => {
         {/* Project Manager Section */}
         <div className="mb-8">
           <div className="border-b-2 border-gray-800 pb-3 mb-6">
-            <h3 className="text-lg font-bold text-gray-800">PROJECT MANAGER</h3>
+            <h3 className="text-lg font-bold text-gray-800">MAAEJER PROYEK</h3>
           </div>
           <div className="space-y-3 sm:px-3">
             {projectManagerCriteria.map((item) => (
@@ -219,7 +219,7 @@ const FeedbackForm = () => {
         {/* Engineer Section */}
         <div className="mb-8">
           <div className="border-b-2 border-gray-800 pb-3 mb-6">
-            <h3 className="text-lg font-bold text-gray-800">ENGINEER</h3>
+            <h3 className="text-lg font-bold text-gray-800">TEKNISI</h3>
           </div>
           <div className="space-y-3 sm:px-3">
             {engineerCriteria.map((item) => (
@@ -238,7 +238,7 @@ const FeedbackForm = () => {
         {/* Implementation & Maintenance Section */}
         <div className="mb-8">
           <div className="border-b-2 border-gray-800 pb-3 mb-6">
-            <h3 className="text-lg font-bold text-gray-800">IMPLEMENTATION & MAINTENANCE</h3>
+            <h3 className="text-lg font-bold text-gray-800">IMPLEMENTASI & PEMELIHARAAN</h3>
           </div>
           <div className="space-y-3 sm:px-3">
             {implementationMaintenanceCriteria.map((item) => (
@@ -257,7 +257,7 @@ const FeedbackForm = () => {
         {/* Suggestions Section */}
         <div className="mb-8">
           <div className="border-b-2 border-gray-800 pb-3 mb-6">
-            <h3 className="text-lg font-bold text-gray-800">SUGGESTIONS</h3>
+            <h3 className="text-lg font-bold text-gray-800">SARAN</h3>
           </div>
           <div className='space-y-3 sm:px-3'> 
           <textarea
@@ -267,7 +267,7 @@ const FeedbackForm = () => {
             focus:outline-none focus:ring-2 
             focus:ring-blue-500 
             focus:border-blue-500"
-            placeholder="Please provide your suggestions or comments here..."
+            placeholder="Silakan berikan saran atau komentar Anda di sini..."
           />
         </div>
         </div>
