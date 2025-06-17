@@ -263,7 +263,7 @@ const FeedbackForm = () => {
         {translations[language].subtitle}
       </h2>
     </div>
-    <div className="absolute right-0 sm:top-0 sm:top-14">
+    <div className="absolute right-0 sm:top-14">
       <LanguageToggle />
     </div>
   </div>
