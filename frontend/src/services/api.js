@@ -11,6 +11,18 @@ export const submitFeedback = async (feedbackData) => {
     // Convert ratings to numbers and validate
     const ratings = {};
     Object.entries(feedbackData.ratings).forEach(([key, value]) => {
+      // Handle personilBackup specially
+      if (key === 'personilBackup') {
+        // If not rated, set to null instead of 0
+        ratings[key] = value === 0 ? null : Number(value);
+        // Only validate if a rating was provided
+        if (ratings[key] !== null && (isNaN(ratings[key]) || ratings[key] < 1 || ratings[key] > 5)) {
+          throw new Error('Invalid rating value for Backup Personnel');
+        }
+        return;
+      }
+
+      // Handle all other ratings
       ratings[key] = Number(value);
       if (isNaN(ratings[key]) || ratings[key] < 1 || ratings[key] > 5) {
         throw new Error(`Invalid rating value for ${key}`);

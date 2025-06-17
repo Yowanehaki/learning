@@ -16,7 +16,7 @@ const LanguageToggle = () => {
       </button>
       <button
         className={`px-2 py-1 rounded-full text-sm font-medium transition-colors ${
-          language === 'EN' ? 'bg-blue-700 text-white' : 'text-gray-600'
+          language === 'EN' ? 'bg-blue-900 text-white' : 'text-gray-600'
         }`}
         onClick={() => setLanguage('EN')}
       >

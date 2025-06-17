@@ -58,37 +58,46 @@ const FeedbackForm = () => {
 
    // Navigasi dan penanganan submit
   const navigate = useNavigate();
-  const handleSubmit = (e) => {
+  // Helper function to check empty ratings
+  const checkEmptyRatings = () => {
+    return Object.keys(ratings).some(key => {
+      if (key === 'personilBackup') return false;
+      return ratings[key] === 0;
+    });
+  };
+
+  // Handle initial submit button click
+  const handleSubmitClick = (e) => {
     e.preventDefault();
-    
-    // check jika ada rating yang kosong
-    const hasEmptyRatings = Object.values(ratings).some(rating => rating === 0);
-    
-    if (hasEmptyRatings) {
-      setShowErrors(true); 
+    // Show confirmation first
+    setModalType('confirm');
+    setShowModal(true);
+  };
+
+  // Handle confirmation submit
+  const handleConfirmSubmit = async () => {
+    // Check for empty ratings after user confirms
+    if (checkEmptyRatings()) {
       setModalType('warning');
-      setShowModal(true);
-      // Membersihkan error setelah 6 detik
+      setShowErrors(true);
       setTimeout(() => {
         setShowErrors(false);
       }, 6000);
       return;
     }
 
-    // Menampilkan modal konfirmasi
-    setModalType('confirm');
-    setShowModal(true);
-  };
-
-  // Fungsi untuk menangani konfirmasi submit
-  const handleConfirmSubmit = async () => {
+    // If all required fields are filled, proceed with submission
     try {
       setShowModal(false);
       
-      console.log('Preparing to submit ratings:', ratings);
+      // Create a copy of ratings and remove personilBackup if it's 0
+      const submissionRatings = { ...ratings };
+      if (submissionRatings.personilBackup === 0) {
+        delete submissionRatings.personilBackup;
+      }
       
       const response = await submitFeedback({
-        ratings,
+        ratings: submissionRatings,
         suggestions
       });
       
@@ -102,24 +111,24 @@ const FeedbackForm = () => {
 
   const criteriaTranslations = {
     ID: {
-      // Sales criteria
+      // Sales
       salesPenguasaanProduk: 'Penguasaan Produk',
       salesPenampilan: 'Penampilan',
       salesKomunikasi: 'Komunikasi',
       salesRespon: 'Respon',
-      // Product criteria
+      // Product
       kesesuaianBarang: 'Kesesuaian barang/lisensi yang diterima',
       ketepatanWaktu: 'Ketepatan waktu pengiriman',
       kondisiBarang: 'Kondisi barang/lisensi',
       kesesuaianJumlah: 'Kesesuaian jumlah barang/lisensi',
-      // Project Manager criteria
+      // Project Manager
       pelaksanaanProject: 'Pelaksanaan Project',
       pmKoordinasi: 'Koordinasi',
       pmPenampilan: 'Penampilan',
       pmKomunikasi: 'Komunikasi',
       pmRespon: 'Respon',
       pmLaporan: 'Laporan',
-      // Engineer criteria
+      // Engineer
       kesesuaianKualifikasi: 'Kesesuaian Kualifikasi',
       kemampuanTeknis: 'Kemampuan Teknis',
       engineerPenampilan: 'Penampilan',
@@ -127,7 +136,7 @@ const FeedbackForm = () => {
       engineerRespon: 'Respon',
       engineerLaporan: 'Laporan',
       personilBackup: 'Personil Backup (Jika ada)',
-      // Implementation criteria
+      // Implementation
       pelaksanaanImplementasi: 'Pelaksanaan Implementasi',
       responServiceDesk: 'Respon Service Desk',
       pemenuhanSLA: 'Pemenuhan SLA',
@@ -135,24 +144,24 @@ const FeedbackForm = () => {
       implLaporan: 'Laporan'
     },
     EN: {
-      // Sales criteria
+      // Sales
       salesPenguasaanProduk: 'Product Knowledge',
       salesPenampilan: 'Appearance',
       salesKomunikasi: 'Communication',
       salesRespon: 'Response',
-      // Product criteria
-      kesesuaianBarang: 'Received goods/license conformity',
-      ketepatanWaktu: 'Delivery timeliness',
-      kondisiBarang: 'Goods/license condition',
-      kesesuaianJumlah: 'Quantity conformity',
-      // Project Manager criteria
+      // Product
+      kesesuaianBarang: 'Product/License Conformity',
+      ketepatanWaktu: 'Delivery Timeliness',
+      kondisiBarang: 'Product/License Condition',
+      kesesuaianJumlah: 'Quantity Conformity',
+      // Project Manager
       pelaksanaanProject: 'Project Implementation',
       pmKoordinasi: 'Coordination',
       pmPenampilan: 'Appearance',
       pmKomunikasi: 'Communication',
       pmRespon: 'Response',
       pmLaporan: 'Reporting',
-      // Engineer criteria
+      // Engineer
       kesesuaianKualifikasi: 'Qualification Conformity',
       kemampuanTeknis: 'Technical Ability',
       engineerPenampilan: 'Appearance',
@@ -160,7 +169,7 @@ const FeedbackForm = () => {
       engineerRespon: 'Response',
       engineerLaporan: 'Reporting',
       personilBackup: 'Backup Personnel (Optional)',
-      // Implementation criteria
+      // Implementation
       pelaksanaanImplementasi: 'Implementation Execution',
       responServiceDesk: 'Service Desk Response',
       pemenuhanSLA: 'SLA Fulfillment',
@@ -241,25 +250,25 @@ const FeedbackForm = () => {
  //Merender komponen
   return (
     <div className="max-w-3xl mx-auto sm:px-15 p-6 bg-white border border-gray-200">
-      {/* Header with Language Toggle */}
-      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 mb-20">
-        <div className="w-80 h-24 sm:w-80 sm:h-30 flex items-center justify-center">
-          <img src={logo} alt="logo" className="w-full h-full object-contain" />
-        </div>
-        <div className="text-center sm:text-left flex-grow">
-          <h1 className="text-xl sm:text-2xl font-bold text-gray-800 py-3">
-            {translations[language].title}
-          </h1>
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-800">
-            {translations[language].subtitle}
-          </h2>
-        </div>
-        <div className="absolute top-4 right-4 sm:top-1 sm:right-96">
-          <LanguageToggle />
-        </div>
-      </div>
+  {/* Header */}
+  <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 mb-20 relative">
+    <div className="w-80 h-24 sm:w-80 sm:h-30 flex items-center justify-center">
+      <img src={logo} alt="logo" className="w-full h-full object-contain" />
+    </div>
+    <div className="text-center sm:text-left">
+      <h1 className="text-xl sm:text-2xl font-bold text-gray-800 py-3">
+        {translations[language].title}
+      </h1>
+      <h2 className="text-xl sm:text-2xl font-bold text-gray-800">
+        {translations[language].subtitle}
+      </h2>
+    </div>
+    <div className="absolute right-0 sm:top-0 sm:top-14">
+      <LanguageToggle />
+    </div>
+  </div>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmitClick}>
         
         {/* Sales Section */}
         <div className="mb-8">
@@ -377,7 +386,7 @@ const FeedbackForm = () => {
         {/* Submit Button */}
         <div className="sm:flex justify-end">
         <button 
-          onClick={handleSubmit}
+          onClick={handleSubmitClick}
           className="w-full sm:w-32 
           bg-blue-700 font-bold 
           text-white py-3 px-4 rounded-lg 
