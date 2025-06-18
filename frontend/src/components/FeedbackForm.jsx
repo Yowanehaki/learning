@@ -223,25 +223,11 @@ const FeedbackForm = () => {
   
   const translations = {
     ID: {
-      title: 'Formulir Umpan Balik Pelanggan',
-      sales: 'Penjualan',
-      product: 'Produk/Lisensi',
-      projectManager: 'Manajer Proyek',
-      engineer: 'Teknisi',
-      implementation: 'Implementasi & Pemeliharaan',
       suggestions: 'Saran & Komentar',
-      submit: 'Kirim',
       placeholder: 'Silakan berikan saran atau komentar Anda di sini...'
     },
-    EN: {
-      title: 'Customer Feedback Form',
-      sales: 'Sales',
-      product: 'Product/License',
-      projectManager: 'Project Manager',
-      engineer: 'Engineer',
-      implementation: 'Implementation & Maintenance',
+    EN: {    
       suggestions: 'Suggestions & Comments',
-      submit: 'Submit',
       placeholder: 'Please provide your suggestions or comments here...'
     }
   };
@@ -293,7 +279,7 @@ const FeedbackForm = () => {
               </div>
               <div>
                 <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent leading-tight">
-                  {translations[language].title}
+                  Customer Feedback Form
                 </h1>
                 <p className="text-gray-500 mt-2 text-sm">
                   {language === 'ID' ? 'Penilaian Anda sangat berharga bagi kami' : 'Your feedback is valuable to us'}
@@ -309,31 +295,31 @@ const FeedbackForm = () => {
         <form onSubmit={handleSubmitClick} className="space-y-6 sm:space-y-8">
           {/* Sales Section */}
           <FormSection 
-            title={translations[language].sales}
+            title= 'Sales'
             criteria={salesCriteria}
           />
 
           {/* Product/License Section */}
           <FormSection 
-            title={translations[language].product}
+            title='Product/License'
             criteria={productCriteria}
           />
 
           {/* Project Manager Section */}
           <FormSection 
-            title={translations[language].projectManager}
+            title='Project Manager'
             criteria={projectManagerCriteria}
           />
 
           {/* Engineer Section */}
           <FormSection 
-            title={translations[language].engineer}
+            title='Engineer'
             criteria={engineerCriteria}
           />
 
           {/* Implementation & Maintenance Section */}
           <FormSection 
-            title={translations[language].implementation}
+            title='Implementation & Maintenance'
             criteria={implementationMaintenanceCriteria}
           />
 
