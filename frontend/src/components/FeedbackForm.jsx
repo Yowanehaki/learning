@@ -86,11 +86,12 @@ const FeedbackForm = () => {
       return;
     }
 
-    // If all required fields are filled, proceed with submission
+    // Jika semua rating sudah diisi, lanjutkan ke pengiriman
     try {
       setShowModal(false);
       
-      // Create a copy of ratings and remove personilBackup if it's 0
+      // Membuat salinan ratings untuk pengiriman
+      // dan menghapus personilBackup jika nilainya 0
       const submissionRatings = { ...ratings };
       if (submissionRatings.personilBackup === 0) {
         delete submissionRatings.personilBackup;

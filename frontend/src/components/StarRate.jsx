@@ -5,6 +5,7 @@ export default function StarRate({ value, onChange, error }){
     const [rating, setRating] = React.useState(value);
     const [hover, setHover] = React.useState(null); 
 
+    // Membuat bintang bintang yang dapat diklik untuk memberikan rating
     return (
         <div className="flex items-center space-x-1">
         {[...Array(5)].map((_, index) => {

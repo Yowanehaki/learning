@@ -38,6 +38,7 @@ const Validation = ({ isOpen, onClose, onConfirm, type }) => {
 
   const content = translations[language];
 
+  // Memeriksa apakah tipe validasi adalah 'warning' atau 'confirmation'
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       {/* Overlay */}

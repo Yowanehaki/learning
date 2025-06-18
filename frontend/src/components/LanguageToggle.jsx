@@ -4,6 +4,7 @@ import { useLanguage } from '../context/LanguageContext';
 const LanguageToggle = () => {
   const { language, setLanguage } = useLanguage();
 
+  // Membuat tombol untuk mengubah bahasa(Toggle Switch)
   return (
     <div className="relative inline-flex items-center bg-gray-100 rounded-full p-1 shadow-sm">
       {/* Sliding background */}

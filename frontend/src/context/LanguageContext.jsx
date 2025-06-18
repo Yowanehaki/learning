@@ -3,13 +3,13 @@ import React, { createContext, useState, useContext, useEffect } from 'react';
 const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
-  // Initialize state from localStorage or default to 'ID'
+  // Inisialisasi state dengan nilai dari localStorage atau default 'ID'
   const [language, setLanguage] = useState(() => {
     const savedLanguage = localStorage.getItem('language');
     return savedLanguage || 'ID';
   });
 
-  // Update localStorage whenever language changes
+  // Update localStorage ketika language berubah
   useEffect(() => {
     localStorage.setItem('language', language);
   }, [language]);
