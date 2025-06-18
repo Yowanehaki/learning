@@ -11,12 +11,12 @@ const Validation = ({ isOpen, onClose, onConfirm, type }) => {
     ID: {
       warning: {
         title: 'Perhatian!',
-        message: 'Harap selesaikan semua penilaian umpan balik sebelum melanjutkan.',
+        message: 'Harap selesaikan semua penilaian form sebelum melanjutkan.',
         close: 'Tutup'
       },
       confirmation: {
         title: 'Konfirmasi Pengiriman',
-        message: 'Apakah Anda yakin ingin mengirimkan umpan balik ini? Harap diperhatikan bahwa umpan balik tidak dapat diubah setelah dikirimkan.',
+        message: 'Apakah Anda yakin ingin mengirimkan form ini? Harap diperhatikan bahwa form tidak dapat diubah setelah dikirimkan.',
         cancel: 'Batal',
         submit: 'Ya, Submit'
       }

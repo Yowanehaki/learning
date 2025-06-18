@@ -233,22 +233,22 @@ const FeedbackForm = () => {
   };
 
   const FormSection = ({ title, criteria }) => (
-    <div className="bg-white rounded-xl border-0 shadow-md hover:shadow-lg transition-shadow duration-300 mb-8">
-      <div className="bg-gradient-to-r from-blue-50 to-blue-50 rounded-t-xl px-4 sm:px-8 py-6 border-b border-gray-50">
+    <div className="bg-white rounded-xl border-0 shadow-md hover:shadow-lg transition-shadow duration-300 mb-6">
+      <div className="bg-gradient-to-r from-blue-50 to-blue-50 rounded-t-xl px-8 sm:px-10 py-4 border-b border-gray-50">
         <h3 className="text-lg sm:text-xl font-bold text-gray-800 flex items-center">
           <div className="w-2 h-6 bg-gradient-to-b from-red-500 to-indigo-600 rounded-full mr-4"></div>
           {title}
         </h3>
       </div>
-      <div className="p-4 sm:p-8">
-        <div className="space-y-6">
+      <div className="p-4 sm:p-3">
+        <div className="space-y-0 sm:space-y-1">
           {criteria.map((item, index) => (
             <div key={item.key} className="group">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between py-4 px-2 rounded-lg hover:bg-gradient-to-r from-white to-blue-50 transition-colors duration-200 gap-3 sm:gap-0">
-                <span className="text-gray-700 font-medium flex-1 pr-0 sm:pr-8 text-base sm:text-lg leading-relaxed">
+              <div className="flex items-center justify-between py-1 sm:py-2 px-2 sm:px-6 rounded-lg hover:bg-gradient-to-r from-white to-blue-50 transition-colors duration-200 gap-2 sm:gap-3">
+                <span className="text-gray-700 font-medium flex-1 pr-1 sm:pr-2 text-sm sm:text-base lg:text-lg leading-relaxed">
                   {item.label}
                 </span>
-                <div className="flex-shrink-0 self-start sm:self-auto">
+                <div className="flex-shrink-0">
                   <StarRate 
                     value={ratings[item.key]} 
                     onChange={(value) => handleRatingChange(item.key, value)}
@@ -257,7 +257,7 @@ const FeedbackForm = () => {
                 </div>
               </div>
               {index < criteria.length - 1 && (
-                <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent mx-2"></div>
+                <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent mx-1 sm:mx-2"></div>
               )}
             </div>
           ))}
@@ -267,12 +267,12 @@ const FeedbackForm = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-6 sm:py-12">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-6 sm:py-7">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="bg-white rounded-2xl shadow-lg border-0 mb-8 sm:mb-12 overflow-hidden">
+        <div className="bg-white rounded-2xl shadow-lg border-0 mb-8 sm:mb-7 overflow-hidden">
           <div className="bg-gradient-to-r from-red-600 to-blue-800 px-4 sm:px-8 py-2"></div>
-          <div className="flex flex-col items-center justify-between p-4 sm:p-8 lg:flex-row">
+          <div className="flex flex-col items-center justify-between p-4 sm:p-7 lg:flex-row">
             <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-8 text-center sm:text-left">
               <div className="w-52 h-24 sm:w-28 sm:h-36 lg:w-60 lg:h-36 flex-shrink-0 rounded-xl p-2">
                 <img src={logo} alt="logo" className="w-full h-full object-contain" />
